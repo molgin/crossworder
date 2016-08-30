@@ -1,4 +1,7 @@
 var path = require('path');
+
+const validate = require('webpack-validator');
+
  
 var config = {
   context: path.join(__dirname, 'src'),
@@ -29,4 +32,4 @@ var config = {
     ],
   },
 };
-module.exports = config;
+module.exports = validate(config);
