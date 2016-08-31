@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const validate = require('webpack-validator');
 
@@ -6,12 +7,17 @@ const validate = require('webpack-validator');
 var config = {
   context: path.join(__dirname, 'src'),
   entry: [
+    'webpack-hot-middleware/client',
     './main.js',
   ],
   output: {
     path: path.join(__dirname, 'www'),
     filename: 'bundle.js',
   },
+  // This plugin activates hot loading
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     loaders: [
       {
