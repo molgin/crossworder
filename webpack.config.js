@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 const validate = require('webpack-validator');
 
@@ -15,9 +15,14 @@ var config = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel'],
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ["style", "css", "sass"]
       },
     ],
   },
