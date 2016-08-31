@@ -5,4 +5,27 @@ button {
 
 body {
   background-color: lightblue;
+  font-family: Helvetica, sans-serif;
+}
+
+table, th, td {
+   border: 1px solid black;
+   padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input {
+  border: none;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  width: 40px;
+  font-size: 1em;
+}
+
+input.black {
+  background-color: black;
 }
