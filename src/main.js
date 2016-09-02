@@ -6,7 +6,7 @@ import '../stylesheets/main.scss';
  
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    React.createElement(CrosswordGrid),
+    <CrosswordGrid/>,
     document.getElementById('mount')
   );
 });

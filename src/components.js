@@ -5,21 +5,26 @@ import React from 'react';
 export class CrosswordGrid extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
+    // just making a multidimensional array
+    this.state.squares = Array.apply(null, { length: this.props.width })
+      .map( (e, row) => Array.apply(null, { length: this.props.height })
+        .map((square, col) => ({row, col, id: row * this.props.width + col, solution: null}))
+      );
+    console.log(this.state.squares.reduce((a,b) => a.concat(b)));
   }
 
   render() {
-    const width = 5;
-    const height = width;
-    let grid = Array.apply(null, { length: width }).map(e => Array.apply(null, { length: height }));
     return (
       <table id="crosswordGrid">
         <tbody>
-          {grid.map((row, i) => <tr key={i}>{row.map((el,j)=><td class="crosswordSquare" key={j}><CrosswordSquare row={i} col={j} /></td>)}</tr>)}
+          {this.state.squares.map((row, i) => <tr key={i}>{row.map((square,j)=><td className="crosswordSquare" key={j}><CrosswordSquare row={square.row} col={square.col} /></td>)}</tr>)}
         </tbody>
       </table>
     );
   }
 }
+CrosswordGrid.defaultProps = {width: 5, height: 5};
 
 export class CrosswordSquare extends React.Component {
   constructor(props) {
@@ -27,7 +32,7 @@ export class CrosswordSquare extends React.Component {
   }
   render() {
     return (
-      <input type="text" value={this.props.row + ", " + this.props.col} />
+      <input type="text" value={this.props.col + ", " + this.props.row} />
     );
   }
 }
