@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export class CrosswordGrid extends React.Component {
+export default class CrosswordGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
