@@ -2,10 +2,12 @@ import React, { PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CrosswordGrid from './components'
+import { ControlPanel } from './components'
 import * as CrosswordActions from './actions'
 
 const App = ({clues, squares, settings, actions}) => (
   <div>
+    <ControlPanel settings={settings} actions={actions} />
     <CrosswordGrid squares={squares} actions={actions} settings={settings} />
     {/* later, a cluelist component */}
   </div>

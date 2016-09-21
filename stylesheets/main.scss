@@ -27,10 +27,18 @@ input {
   width: 40px;
   font-size: 1.8em;
   text-transform: uppercase;
+}
 
-  &.black {
-    background-color: black;
-  }
+.black input {
+  background-color: black;
+}
+
+.black-square-mode input {
+  cursor: default;
+}
+
+.toggle-button.on {
+  background-color: red;
 }
 
 

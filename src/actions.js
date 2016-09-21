@@ -1,1 +1,1 @@
-  export const dummyAction = text => ({ type: "DUMMY_ACTION", text })
+export const toggleBlackSquareMode = text => ({ type: "TOGGLE_BLACK_SQUARE_MODE" })

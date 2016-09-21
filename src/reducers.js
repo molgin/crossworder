@@ -23,13 +23,18 @@ let squares = Array.apply(null, { length: width })
 const initialState = {
   clues: [],
   squares,
-  settings: {}
+  settings: {
+    blackSquareMode: false
+  }
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case 'DUMMY_ACTION':
       return state
+
+    case "TOGGLE_BLACK_SQUARE_MODE":
+      return Object.assign({}, state, {settings: Object.assign({}, state.settings, {blackSquareMode: !state.settings.blackSquareMode})})
 
     default:
       return state

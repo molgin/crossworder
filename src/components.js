@@ -35,3 +35,37 @@ export class CrosswordSquare extends React.Component {
     );
   }
 }
+
+export class ControlPanel extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleBlackSquareModeToggle() {
+    this.props.actions.toggleBlackSquareMode()
+  }
+
+  render() {
+    return (
+      <div>
+        <ToggleButton onToggle={this.handleBlackSquareModeToggle.bind(this)}
+                      text="Edit Black Squares"
+                      name="black-squares"
+                      status={this.props.settings.blackSquareMode} />
+      </div>
+    )
+  }
+}
+
+export class ToggleButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button className={"toggle-button " + this.props.name + (this.props.status ? " on" : "")}
+              onClick={this.props.onToggle} >{this.props.text}</button>
+    )
+  }
+}
