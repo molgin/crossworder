@@ -17,7 +17,15 @@ export default class CrosswordGrid extends React.Component {
         <tbody>
           {this.props.squares.map((row, i) => <tr key={i}>{row.map((square,j)=>
             <td className="crossword-square" key={j}>
-              <CrosswordSquare row={square.row} col={square.col} clueNumber={square.clueNumber} solution={square.solution} isBlackSquareMode={this.isBlackSquareMode.bind(this)} />
+              <CrosswordSquare
+                row={square.row}
+                col={square.col}
+                clueNumber={square.clueNumber}
+                solution={square.solution}
+                enabled={square.enabled}
+                isBlackSquareMode={this.isBlackSquareMode.bind(this)}
+                toggleBlackSquare={this.props.actions.toggleBlackSquare}
+              />
               </td>)}
           </tr>)}
         </tbody>
@@ -29,18 +37,17 @@ export default class CrosswordGrid extends React.Component {
 export class CrosswordSquare extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {enabled: true}
   }
 
   handleClick() {
     if (this.props.isBlackSquareMode()) {
-      this.setState({enabled: !this.state.enabled})
+      this.props.toggleBlackSquare(this.props.row, this.props.col)
     }
   }
 
   render() {
     return (
-      <div onClick={this.handleClick.bind(this)} className={!this.state.enabled ? "black" : null} >
+      <div onClick={this.handleClick.bind(this)} className={!this.props.enabled ? "black" : null} >
         <div className="clue-number-wrapper">
           <div className="clue-number">{this.props.clueNumber}</div>
         </div>

@@ -22,3 +22,10 @@ Compile
 ```
 npm run compile
 ```
+
+Tests
+---
+ 
+```
+mocha
+```
