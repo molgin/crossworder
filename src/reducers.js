@@ -28,7 +28,8 @@ const initialState = {
   clues: [],
   squares,
   settings: {
-    blackSquareMode: false
+    blackSquareMode: false,
+    rotationalSymmetry: true
   }
 }
 
@@ -39,6 +40,10 @@ export default function reducer(state = initialState, action) {
 
     case "TOGGLE_BLACK_SQUARE_MODE":
       return Object.assign({}, state, {settings: Object.assign({}, state.settings, {blackSquareMode: !state.settings.blackSquareMode})})
+
+    case "TOGGLE_ROTATIONAL_SYMMETRY":
+      return Object.assign({}, state, {settings: Object.assign({}, state.settings, {rotationalSymmetry: !state.settings.rotationalSymmetry})})
+
 
     // Square reducers
 

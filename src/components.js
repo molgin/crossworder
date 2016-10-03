@@ -83,13 +83,22 @@ export class ControlPanel extends React.Component {
     this.props.actions.toggleBlackSquareMode()
   }
 
+  handleRotationalSymmetryToggle() {
+    this.props.actions.toggleRotationalSymmetry()
+  }
+
   render() {
     return (
-      <div>
+      <div id="control-panel">
         <ToggleButton onToggle={this.handleBlackSquareModeToggle.bind(this)}
                       text="Edit Black Squares"
                       name="black-squares"
                       status={this.props.settings.blackSquareMode} />
+        <div className={this.props.settings.blackSquareMode ? null : "hidden"}>
+          <Checkbox onToggle={this.handleRotationalSymmetryToggle.bind(this)}
+                  text="Rotational symmetry"
+                  status={this.props.settings.rotationalSymmetry} />
+        </div>
       </div>
     )
   }
@@ -104,6 +113,19 @@ export class ToggleButton extends React.Component {
     return (
       <button className={"toggle-button " + this.props.name + (this.props.status ? " on" : "")}
               onClick={this.props.onToggle} >{this.props.text}</button>
+    )
+  }
+}
+
+export class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <label><input type="checkbox" className="checkbox"
+              onChange={this.props.onToggle} checked={this.props.status} /><span>{this.props.text}</span></label>
     )
   }
 }

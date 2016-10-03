@@ -26,6 +26,30 @@ describe("TOGGLE_BLACK_SQUARE_MODE", () => {
 
 })
 
+describe("TOGGLE_ROTATIONAL_SYMMETRY", () => {
+
+  let onState = {
+    squares: [],
+    clues: [],
+    settings: {rotationalSymmetry: true}
+  }
+
+  let offState = {
+    squares: [],
+    clues: [],
+    settings: {rotationalSymmetry: false}
+  }
+
+  it('toggles the mode from off to on', () => {
+    expect(Reducer(offState, {type: "TOGGLE_ROTATIONAL_SYMMETRY"}).settings.rotationalSymmetry).to.equal(true)
+  })
+
+  it('toggles the mode from on to off', () => {
+    expect(Reducer(onState, {type: "TOGGLE_ROTATIONAL_SYMMETRY"}).settings.rotationalSymmetry).to.equal(false)
+  })
+
+})
+
 describe("TOGGLE_BLACK_SQUARE", () => {
 
   let allSquaresEnabled = {
