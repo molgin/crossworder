@@ -1,6 +1,6 @@
 // this will be split up later!
 
-import React from 'react';
+import React from 'react'
 
 export default class CrosswordGrid extends React.Component {
   constructor(props) {
@@ -40,20 +40,37 @@ export class CrosswordSquare extends React.Component {
   }
 
   handleClick() {
-    if (this.props.isBlackSquareMode()) {
-      this.props.toggleBlackSquare(this.props.row, this.props.col)
-    }
+  }
+
+  handleBlackClick(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.props.toggleBlackSquare(this.props.row, this.props.col)
   }
 
   render() {
-    return (
-      <div onClick={this.handleClick.bind(this)} className={!this.props.enabled ? "black" : null} >
-        <div className="clue-number-wrapper">
-          <div className="clue-number">{this.props.clueNumber}</div>
+    // temporarily very wet
+
+    if (this.props.isBlackSquareMode()) {
+      return (
+          <div onClick={this.handleBlackClick.bind(this)} className={(!this.props.enabled ? "black" : "white") + " square-wrapper"} >
+            <div className="clue-number-wrapper">
+              <div className="clue-number">{this.props.clueNumber}</div>
+            </div>
+            <div className="square">{this.props.solution}</div>
+          </div>
+      )
+    }
+    else {
+      return (
+        <div onClick={this.handleClick.bind(this)} className={(!this.props.enabled ? "black" : "white") + " square-wrapper"} >
+          <div className="clue-number-wrapper">
+            <div className="clue-number">{this.props.clueNumber}</div>
+          </div>
+          <input type="text" value={this.props.solution} />
         </div>
-        <input type="text" value={this.props.solution} />
-      </div>
-    )
+      )
+    }
   }
 }
 
