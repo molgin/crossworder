@@ -55,6 +55,11 @@ input {
     background-color: powderblue;
     cursor: default;
   }
+
+  .white.symmetry-highlight .square {
+    // note to self: pick better colors
+    background-color: cyan;
+  }
 }
 
 .toggle-button {

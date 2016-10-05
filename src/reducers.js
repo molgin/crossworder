@@ -1,4 +1,4 @@
-const width = 10
+const width = 13
 
 export function squaresByWidth(width) {
   const height = width
@@ -12,6 +12,7 @@ export function squaresByWidth(width) {
         clueNumber = row + width
 
       return {
+        id: row * width + col,
         row,
         col,
         clueNumber,
@@ -32,6 +33,8 @@ const initialState = {
     rotationalSymmetry: true
   }
 }
+
+console.log(initialState)
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
